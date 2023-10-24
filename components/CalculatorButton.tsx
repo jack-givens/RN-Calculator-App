@@ -45,7 +45,7 @@ export const CalculatorButton = ({
   buttonStyles.push({ backgroundColor: background }, style);
   textStyles.push({ color: foreground }, textStyle);
   return (
-    <TouchableOpacity style={buttonStyles} onPress={() => onPress?.(type, value)}>
+    <TouchableOpacity style={buttonStyles} onPress={() => onPress?.(type, value)} activeOpacity={0.6}>
       <Text style={textStyles}>{value}</Text>
     </TouchableOpacity>
   )
@@ -56,15 +56,15 @@ export const common = StyleSheet.create({
     fontSize: 24,
   },
   button: {
-    flex: 1,
+    flex: 10,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 100,
+    borderRadius: 200,
     backgroundColor: '#ffffff',
     margin: 5
   },
   largeButton: {
-    flex: 2,
+    flex: 11,
     alignItems: "flex-start",
     paddingHorizontal: 40
   },
