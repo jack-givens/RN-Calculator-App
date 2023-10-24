@@ -2,44 +2,46 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { CalculatorButton } from '../components/CalculatorButton';
 import { StatusBar } from 'expo-status-bar';
+import { useCalculator } from '../hooks/useCalculator';
 
 export const HorizontalCalculator = () => {
+  const {value, dispatch} = useCalculator();
   return (
     <View style={styles.root}>
       <StatusBar style="auto"/>
       <View style={styles.outputContainer}>
         <Text style={styles.output}>
-          123,456,789
+          {value}
         </Text>
       </View>
       <View style={styles.row}>
-        <CalculatorButton value="C" type="utility"/>
-        <CalculatorButton value="+/-" type="utility"/>
-        <CalculatorButton value="%" type="utility"/>
-        <CalculatorButton value="/" type="operator"/>
+        <CalculatorButton onPress={dispatch} value="C" type="utility"/>
+        <CalculatorButton onPress={dispatch} value="+/-" type="utility"/>
+        <CalculatorButton onPress={dispatch} value="%" type="utility"/>
+        <CalculatorButton onPress={dispatch} value="/" type="operator"/>
       </View>
       <View style={styles.row}>
-        <CalculatorButton value="7"/>
-        <CalculatorButton value="8"/>
-        <CalculatorButton value="9"/>
-        <CalculatorButton value="x" type="operator"/>
+        <CalculatorButton onPress={dispatch} value="7"/>
+        <CalculatorButton onPress={dispatch} value="8"/>
+        <CalculatorButton onPress={dispatch} value="9"/>
+        <CalculatorButton onPress={dispatch} value="x" type="operator"/>
       </View>
       <View style={styles.row}>
-        <CalculatorButton value="4"/>
-        <CalculatorButton value="5"/>
-        <CalculatorButton value="6"/>
-        <CalculatorButton value="-" type="operator"/>
+        <CalculatorButton onPress={dispatch} value="4"/>
+        <CalculatorButton onPress={dispatch} value="5"/>
+        <CalculatorButton onPress={dispatch} value="6"/>
+        <CalculatorButton onPress={dispatch} value="-" type="operator"/>
       </View>
       <View style={styles.row}>
-        <CalculatorButton value="1"/>
-        <CalculatorButton value="2"/>
-        <CalculatorButton value="3"/>
-        <CalculatorButton value="+" type="operator"/>
+        <CalculatorButton onPress={dispatch} value="1"/>
+        <CalculatorButton onPress={dispatch} value="2"/>
+        <CalculatorButton onPress={dispatch} value="3"/>
+        <CalculatorButton onPress={dispatch} value="+" type="operator"/>
       </View>
       <View style={styles.row}>
-        <CalculatorButton value="0" type="number" size="lg"/>
-        <CalculatorButton value="." type="number"/>
-        <CalculatorButton value="=" type="operator"/>
+        <CalculatorButton onPress={dispatch} value="0" type="number" size="lg"/>
+        <CalculatorButton onPress={dispatch} value="." type="number"/>
+        <CalculatorButton onPress={dispatch} value="=" type="operator"/>
       </View>
     </View>
   )

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, TouchableOpacityProps, ViewStyle, Text } from "react-native"
 
-type ButtonType = 'number' | 'operator' | 'utility';
+export type ButtonType = 'number' | 'operator' | 'utility';
 
 const colorVariants: Record<ButtonType, { background: TextStyle['color'], foreground: TextStyle['color'] }> = {
   number: { background: '#333333', foreground: '#fdfdfd' },
@@ -15,7 +15,7 @@ export type Props = Omit<TouchableOpacityProps, 'onPress'> & {
   type?: ButtonType,
   textStyle?: StyleProp<TextStyle>
   value: string,
-  onPress?: (type: ButtonType, value: string) => void,
+  onPress?: (value: {type: ButtonType, value: string}) => void,
 }
 
 const getColors = (type: ButtonType, invert = false) => {
@@ -45,7 +45,7 @@ export const CalculatorButton = ({
   buttonStyles.push({ backgroundColor: background }, style);
   textStyles.push({ color: foreground }, textStyle);
   return (
-    <TouchableOpacity style={buttonStyles} onPress={() => onPress?.(type, value)} activeOpacity={0.6}>
+    <TouchableOpacity style={buttonStyles} onPress={() => onPress?.({type, value})} activeOpacity={0.6}>
       <Text style={textStyles}>{value}</Text>
     </TouchableOpacity>
   )
